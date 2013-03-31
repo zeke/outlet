@@ -5,6 +5,7 @@
 
 var Stream = require('stream').Stream
 var utils = require('./utils')
+var K = function(k){ return k }
 
 /**
  * Provides a Node.js 0.8 style [ReadStream](http://nodejs.org/docs/v0.8.21/api/stream.html#stream_readable_stream) interface for Queries.
@@ -24,11 +25,22 @@ var utils = require('./utils')
  *
  *     Model.where('created').gte(twoWeeksAgo).stream().pipe(writeStream);
  *
+ * ####Valid options
+ *
+ *   - `transform`: optional function which accepts a mongoose document. The return value of the function will be emitted on `data`.
+ *
+ * ####Example
+ *
+ *     // JSON.stringify all documents before emitting
+ *     var stream = Thing.find().stream({ transform: JSON.stringify });
+ *     stream.pipe(writeStream);
+ *
  * _NOTE: plugging into an HTTP response will *not* work out of the box. Those streams expect only strings or buffers to be emitted, so first formatting our documents as strings/buffers is necessary._
  *
  * _NOTE: these streams are Node.js 0.8 style read streams which differ from Node.js 0.10 style. Node.js 0.10 streams are not well tested yet and are not guaranteed to work._
  *
  * @param {Query} query
+ * @param {Object} [options]
  * @inherits NodeJS Stream http://nodejs.org/docs/v0.8.21/api/stream.html#stream_readable_stream
  * @event `data`: emits a single Mongoose document
  * @event `error`: emits when an error occurs during streaming. This will emit _before_ the `close` event.
@@ -36,7 +48,7 @@ var utils = require('./utils')
  * @api public
  */
 
-function QueryStream (query) {
+function QueryStream (query, options) {
   Stream.call(this);
 
   this.query = query;
@@ -48,6 +60,9 @@ function QueryStream (query) {
   this._buffer = null;
   this._inline = T_INIT;
   this._running = false;
+  this._transform = options && 'function' == typeof options.transform
+    ? options.transform
+    : K;
 
   // give time to hook up events
   var self = this;
@@ -197,7 +212,7 @@ QueryStream.prototype._onNextObject = function _onNextObject (err, doc) {
   }
 
   if (this.query.options && true === this.query.options.lean)  {
-    this.emit('data', doc);
+    this.emit('data', this._transform(doc));
 
     // trampoline management
     if (T_IDLE === this._inline) {
@@ -214,9 +229,9 @@ QueryStream.prototype._onNextObject = function _onNextObject (err, doc) {
   var instance = new this.query.model(undefined, this._fields, true);
 
   var self = this;
-  instance.init(doc, this.query, function (err) {
+  instance.init(doc, function (err) {
     if (err) return self.destroy(err);
-    self.emit('data', instance);
+    self.emit('data', self._transform(instance));
 
     // trampoline management
     if (T_IDLE === self._inline) {

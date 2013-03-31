@@ -45,13 +45,12 @@ NativeConnection.prototype.doOpen = function (fn) {
   var self = this;
   this.db.open(function (err) {
     if (err) return fn(err);
-    fn();
     listen(self);
+    fn();
   });
 
   return this;
 };
-
 
 /*!
  * Register listeners for important events and bubble appropriately.
@@ -204,6 +203,11 @@ NativeConnection.prototype.parseOptions = function (passed, connStrOpts) {
       case 'authdb':
         if ('undefined' == typeof o.auth.authdb) {
           o.auth.authdb = opts[name];
+        }
+        break;
+      case 'authSource':
+        if ('undefined' == typeof o.auth.authSource) {
+          o.auth.authSource = opts[name];
         }
         break;
       case 'retries':

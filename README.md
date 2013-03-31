@@ -22,6 +22,7 @@ ddollar/heroku-sql-console
 glenngillen/heroku-exit-status
 heroku/external-repo-cli
 heroku/heroku-aspen-migrate
+heroku/heroku-deploy
 heroku/heroku-fork
 heroku/heroku-multikernel
 heroku/heroku-oauth
@@ -37,6 +38,19 @@ pvh/heroku-values
 will/heroku-pgsnapshots
 will/heroku-sharedconfig
 ddollar/heroku-redis-cli
+tpope/heroku-wildcards
+tpope/heroku-remote
+tpope/heroku-fucking-console
+tpope/heroku-binstubs
+tpope/heroku-surrogate
+tpope/heroku-pgbackups-pull
+rainforestapp/heroku.json
+envato/heroku-deploy
+kylejginavan/heroku_jammit
+stvp/heroku-redisgreen
+chebyte/heroku_clonedb
+
+isc/heroku-adminium
 
 ## Development
 
