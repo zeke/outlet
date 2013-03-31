@@ -29,10 +29,7 @@ pluginSchema.statics.fetch = (gid, cb) ->
 
     plugin = new Plugin(props)
 
-    console.log plugin.name
-
     plugin.save (err, plugin) ->
-      console.log "PLUGIN SAVED_____________________________"
       return cb(err) if err
       cb(null, plugin)
 

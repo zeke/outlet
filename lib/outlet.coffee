@@ -4,8 +4,7 @@ cors     = require("cors")
 mongoose = require("mongoose")
 Plugin   = require("../lib/plugin")
 
-mongoose.connect process.env.MONGOHQ_URL, (err, res) ->
-  console.log "error connecting to mongo" if err
+mongoose.connect(process.env.MONGOHQ_URL)
 
 app = express(
   express.logger()
