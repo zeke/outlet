@@ -4,7 +4,7 @@ cors     = require("cors")
 mongoose = require("mongoose")
 Plugin   = require("../lib/plugin")
 
-mongoose.connect(process.env.MONGOHQ_URL)
+mongoose.connect(process.env.MONGO_URL)
 
 app = express(
   express.logger()
@@ -14,6 +14,7 @@ app = express(
 
 app.get "/plugins", cors(), (req, res) ->
   Plugin.find (err, plugins) ->
+    return res.jsonp(400, {error: err}) if err
     res.jsonp plugins
 
 app.get "/plugins/:user/:repo", cors(), (req, res) ->

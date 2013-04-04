@@ -15,7 +15,7 @@
     "mocha": "1.8.x"
   },
   "scripts": {
-    "test": "foreman run mocha --reporter spec --timeout 5000 --compilers coffee:coffee-script ./test/*test.coffee"
+    "test": "foreman run node_modules/.bin/mocha ./test/*test.coffee"
   },
   "engines": {
     "node": "0.8.x",
