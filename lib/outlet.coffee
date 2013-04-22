@@ -4,7 +4,7 @@ cors     = require("cors")
 mongoose = require("mongoose")
 Plugin   = require("../lib/plugin")
 
-mongoose.connect(process.env.MONGO_URL)
+mongoose.connect(process.env.MONGOHQ_URL)
 
 app = express()
 app.use express.bodyParser()
