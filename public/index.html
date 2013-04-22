@@ -45,13 +45,13 @@
   {{#repos}}
   <tr>
     <td class="name"><a href="{{html_url}}">{{full_name}}</a></td>
-    <td class="description">{{description}}</td>
+    <td class="description expendable">{{description}}</td>
     <td class="watchers centered">{{watchers}}</td>
     <td class="forks centered">{{forks}}</td>
-    <td class="pushed_at faint">
+    <td class="pushed_at faint expendable">
       <time class="timeago" datetime="{{pushed_at}}" title="{{pushed_at}}">{{pushed_at}}</time>
     </td>
-    <td class="more"><a href="{{url}}" class="more">...</a></td>
+    <td class="more expendable"><a href="{{url}}" class="more">...</a></td>
   </tr>
   {{/repos}}
 </script>
@@ -59,11 +59,11 @@
 <script id="table_header_template" type="text/template">
   <tr>
     <th>Name</th>
-    <th>Description</th>
+    <th class="expendable">Description</th>
     <th class="centered">Watchers</th>
     <th class="centered">Forks</th>
-    <th>Last Push</th>
-    <th>...</th>
+    <th class="expendable">Last Push</th>
+    <th class="expendable">...</th>
   </tr>
 </script>
 
