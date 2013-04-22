@@ -6,16 +6,20 @@ Plugin   = require("../lib/plugin")
 
 mongoose.connect(process.env.MONGO_URL)
 
-app = express(
-  express.logger()
-  express.cookieParser()
-  express.bodyParser()
-)
+app = express()
+app.use express.bodyParser()
+app.use app.router
 
 app.get "/plugins", cors(), (req, res) ->
   Plugin.find (err, plugins) ->
     return res.jsonp(400, {error: err}) if err
     res.jsonp plugins
+
+app.post "/plugins", cors(), (req, res) ->
+  gid = [req.body.user, req.body.repo].join("/")
+  Plugin.fetch gid, (err, plugin) =>
+    return res.jsonp(400, {error: err}) if err
+    res.jsonp(plugin)
 
 app.get "/plugins/:user/:repo", cors(), (req, res) ->
   gid = [req.params.user, req.params.repo].join("/")
