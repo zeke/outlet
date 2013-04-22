@@ -9,6 +9,8 @@ mongoose.connect(process.env.MONGOHQ_URL)
 app = express()
 app.use express.bodyParser()
 app.use app.router
+# app.use express.static('public')
+app.use '/', express.static('public')
 
 app.get "/reset", (req, res) ->
   Plugin.collection.drop (err) ->

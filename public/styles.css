@@ -1,0 +1,102 @@
+body {
+  font-family: "proxima-nova", "helvetica neue";
+  padding: 20px;
+  font-size: 14px;
+}
+
+header {
+  margin-bottom: 80px;
+}
+
+header hgroup {
+  float: left;
+}
+
+header nav {
+  float: right;
+}
+
+header nav ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+header nav ol li {
+  display: inline-block;
+  padding: 3px 6px;
+  border-right: 1px solid #F0F0F0;
+}
+
+header nav ol li:last-child {
+ border-right: none;
+ padding-right: 0;
+}
+
+hgroup h1, hgroup h2 {
+  display: inline-block;
+  line-height: 32px;
+}
+
+h1 {
+  font-size: 36px;
+  font-weight: bold;
+}
+
+hgroup h2 {
+  color: #CCC;
+  padding-left: 5px;
+  font-weight: 300;
+  font-size: 18px;
+}
+
+a {
+  color: rgb(103, 98, 166);
+  text-decoration: none;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+tr:hover {
+  background: rgba(100,100,100,0.05);
+}
+
+th, td {
+  text-align: left;
+  padding: 8px 5px;
+}
+
+th {
+  color: #999;
+  font-weight: normal;
+}
+
+td {
+  border-top: 1px solid #F0F0F0;
+}
+
+td.name {
+  font-size: 16px;
+}
+
+td.faint {
+  opacity: 0.5;
+}
+
+td a {
+  text-decoration: none;
+}
+
+tfoot {
+  display: none;
+}
+
+footer {
+  margin: 50px 0 20px 0;
+  text-align: center;
+  color: #999;
+}
