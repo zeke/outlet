@@ -28,7 +28,6 @@
         }
       });
 
-
       // Render Table Rows
       var repo_row_template = document.querySelector('#repo_row_template').innerHTML;
       document.querySelector('#repos tbody').innerHTML = Mustache.render(repo_row_template, {repos: repos});
@@ -46,13 +45,13 @@
   {{#repos}}
   <tr>
     <td class="name"><a href="{{html_url}}">{{full_name}}</a></td>
-    <td>{{description}}</td>
-    <td class="centered">{{watchers}}</td>
-    <td class="centered">{{forks}}</td>
-    <td class="faint">
+    <td class="description">{{description}}</td>
+    <td class="watchers centered">{{watchers}}</td>
+    <td class="forks centered">{{forks}}</td>
+    <td class="pushed_at faint">
       <time class="timeago" datetime="{{pushed_at}}" title="{{pushed_at}}">{{pushed_at}}</time>
     </td>
-    <td><a href="{{url}}" class="more">...</a></td>
+    <td class="more"><a href="{{url}}" class="more">...</a></td>
   </tr>
   {{/repos}}
 </script>
