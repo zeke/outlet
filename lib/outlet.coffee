@@ -10,6 +10,11 @@ app = express()
 app.use express.bodyParser()
 app.use app.router
 
+app.get "/reset", (req, res) ->
+  Plugin.collection.drop (err) ->
+    return res.jsonp(400, {error: err}) if err
+    res.jsonp(200, {message: "plugin collection dropped"})
+
 app.get "/plugins", cors(), (req, res) ->
   Plugin.find (err, plugins) ->
     return res.jsonp(400, {error: err}) if err
