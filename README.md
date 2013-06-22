@@ -39,9 +39,13 @@ function publish_plugin() {
 ## Development
 
 ```sh
-npm install
-foreman start
+brew install mongodb node   # (if you don't already have 'em)
+npm install                 # install dependencies
+mongod&                     # run mongo in the background
+foreman start               # run node server with foreman
 ```
+
+Pop open [localhost:5000](http://localhost:5000).
 
 ## License
 
