@@ -1,6 +1,7 @@
 {
   "name": "outlet",
   "version": "0.0.1",
+  "description": "A registry of plugins for Heroku's CLI",
   "dependencies": {
     "async": "0.1.x",
     "coffee-script": "1.2.x",
