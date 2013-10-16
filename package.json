@@ -16,7 +16,8 @@
     "mocha": "1.8.x"
   },
   "scripts": {
-    "test": "foreman run node_modules/.bin/mocha ./test/*test.coffee"
+    "test": "foreman run node_modules/.bin/mocha ./test/*test.coffee",
+    "preinstall": "echo hello I am the preinstall script"
   },
   "engines": {
     "node": "0.11.7"
