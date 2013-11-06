@@ -20,6 +20,6 @@
     "preinstall": "echo hello I am the preinstall script"
   },
   "engines": {
-    "node": "0.8.26"
+    "node": "0.10.x"
   }
 }
