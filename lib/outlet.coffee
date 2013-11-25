@@ -1,15 +1,16 @@
-express  = require("express")
-https    = require("https")
-cors     = require("cors")
-mongoose = require("mongoose")
-Plugin   = require("../lib/plugin")
+express  = require "express"
+logfmt   = require "logfmt"
+https    = require "https"
+cors     = require "cors"
+mongoose = require "mongoose"
+Plugin   = require "../lib/plugin"
 
 mongoose.connect(process.env.MONGOHQ_URL)
 
 app = express()
 app.use express.bodyParser()
+app.use logfmt.requestLogger()
 app.use app.router
-# app.use express.static('public')
 app.use '/', express.static('public')
 
 app.get "/reset", (req, res) ->
