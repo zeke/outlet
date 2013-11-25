@@ -43,6 +43,36 @@ header nav ol li:last-child {
  padding-right: 0;
 }
 
+form {
+  background: #58488A;
+  margin: 0;
+  padding: 8px 12px;
+  line-height: 2.2;
+  border: none;
+  border-radius: 5px;
+  color: white;
+}
+
+form input {
+  font-family: "proxima-nova", "helvetica neue";
+  padding: 4px 8px;
+  font-size: 16px;
+  line-height: 1.8;
+  border-radius: 2px;
+  border: none;
+}
+
+form input[type="submit"] {
+  background: #58488A;
+  margin: 0;
+  padding: 0 12px;
+  line-height: 2.2;
+  border: none;
+  border-radius: 3px;
+  color: white;
+  /*font-weight: bold;*/
+}
+
 hgroup h1, hgroup h2 {
   display: inline-block;
   line-height: 32px;

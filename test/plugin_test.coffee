@@ -12,14 +12,14 @@ describe "Plugin", ->
 
     it "creates a plugin if the repo exists on github", (done) ->
       Plugin.fetch "heroku/heroku-fork", (err, plugin) ->
-        plugin.should.have.property('name', 'heroku-fork')
+        plugin.should.have.property('repo')
+        plugin.repo.should.have.property('name', 'heroku-fork')
         done()
 
     it "inherits all the desired attributes", (done) ->
       Plugin.fetch "heroku/heroku-fork", (err, plugin) ->
-        plugin.should.have.property('name', 'heroku-fork')
-        plugin.should.have.property('owner_login', 'heroku')
-        # should.exist(plugin.description)
+        plugin.repo.should.have.property('name', 'heroku-fork')
+        plugin.repo.should.have.property('owner_login', 'heroku')
         done()
 
     it "doesn't create a plugin that's already been fetched"

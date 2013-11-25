@@ -9,7 +9,8 @@
     "express": "3.1.x",
     "mongoose": "3.6.x",
     "request": "2.16.x",
-    "logfmt": "~0.17.0"
+    "logfmt": "~0.17.0",
+    "github-url-to-object": "~0.2.1"
   },
   "devDependencies": {
     "nodemon": "0.7.x",

@@ -24,10 +24,19 @@ app.get "/plugins", cors(), (req, res) ->
     res.jsonp plugins
 
 app.post "/plugins", cors(), (req, res) ->
+
+  # Extract user and repo from URL string
+  if req.body.repo
+    obj = require('github-url-to-object')(req.body.repo)
+    req.body.user = obj.user
+    req.body.repo = obj.repo
+
+  # Assemble user/repo pair string
   gid = [req.body.user, req.body.repo].join("/")
+
   Plugin.fetch gid, (err, plugin) =>
     return res.jsonp(400, {error: err}) if err
-    res.jsonp(plugin)
+    res.redirect('/')
 
 app.get "/plugins/:user/:repo", cors(), (req, res) ->
   gid = [req.params.user, req.params.repo].join("/")
