@@ -1,5 +1,6 @@
 --require should
 --reporter spec
+--ui tdd
 --timeout 5000
---ui bdd
 --compilers coffee:coffee-script
+--bail
